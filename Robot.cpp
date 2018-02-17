@@ -40,12 +40,10 @@
 #include <Phoenix.h>
 #include "Drivetrain.h"
 #include "CController.h"
-#include "cascade.h"
 #include "manipulator.h"
-
+#include "cascade.h"
 #include "Gyro.h"
 
-manipulator * manipulatorClass;
 CController *controllerClass;
 GyroClass *gyroClassOne;
 extern DrivetrainClass *drivetrain;
@@ -53,6 +51,8 @@ extern DrivetrainClass *drivetrain;
 class Robot : public frc::IterativeRobot {
 
     DrivetrainClass *drivetrain;
+    manipulator *manipulatorClass;
+    Cascade *elevator;
     int switchSide;
 	int scaleSide;  
 	
@@ -60,13 +60,15 @@ class Robot : public frc::IterativeRobot {
 public:
 	void RobotInit()
 	{
+        manipulatorClass = new manipulator();
         controllerClass = new CController();
 		gyroClassOne = new GyroClass;
+	    elevator = new Cascade();
 		m_chooser.AddDefault(kAutoNameDefault, kAutoNameDefault);
 		m_chooser.AddObject(kAutoNameCustom, kAutoNameCustom);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
-
+    
 		drivetrain = new DrivetrainClass();
 		
 		drivetrain->linkMotors();
@@ -172,15 +174,14 @@ public:
 
 	void TeleopInit()
 	{
-        
+        elevator->initElevator();
 	}
 
 	void TeleopPeriodic()
 	{
         //gyroClassOne->getYaw();
-
+        elevator->controlElevator();
 		drivetrain->Drive();
-		elevator->controlElevator();
         manipulatorClass->manipulatorPower();
 		
 	}
