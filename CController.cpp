@@ -84,7 +84,7 @@ void CController::getControllerTwo()
 
 void CController::getPanelButtons()
 {
-    for(int i = 0 ; i < 12; i++) 
+    for(int i = 1 ; i < 12; i++) 
     {
         bPanelButtons[i] = PanelJoysticks[0]->GetRawButton(i);
         bPanelButtons[12+i] = PanelJoysticks[1]->GetRawButton(i);
