@@ -40,9 +40,12 @@
 #include <Phoenix.h>
 #include "Drivetrain.h"
 #include "CController.h"
+#include "cascade.h"
+#include "manipulator.h"
 
 #include "Gyro.h"
 
+manipulator * manipulatorClass;
 CController *controllerClass;
 GyroClass *gyroClassOne;
 extern DrivetrainClass *drivetrain;
@@ -177,6 +180,8 @@ public:
         //gyroClassOne->getYaw();
 
 		drivetrain->Drive();
+		elevator->controlElevator();
+        manipulatorClass->manipulatorPower();
 		
 	}
 

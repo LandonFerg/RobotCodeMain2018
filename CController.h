@@ -64,6 +64,9 @@ class CController
         bool bYButtonPressed [2];
         bool bXButtonPressed [2];
         
+        double dTriggerLAxis [1]; // I added this - CR
+        double dTriggerRAxis [1]; // I added this - CR
+        
         bool bAButtonReleased [2];
         bool bBButtonReleased [2];
         bool bYButtonReleased [2];

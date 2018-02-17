@@ -80,6 +80,8 @@ void CController::getControllerTwo()
     dRightXAxis[controller_Two] = ControllerTwo->GetX(Right_Stick_X);
     dRightYAxis[controller_Two] = ControllerTwo->GetY(Right_Stick_Y);
     
+    dTriggerLAxis[controller_Two] = ControllerTwo->GetTriggerAxis(Left_Trigger); // I added this - CR
+    dTriggerRAxis[controller_Two] = ControllerTwo->GetTriggerAxis(Right_Trigger); // I added this - CR
 }
 
 void CController::getPanelButtons()
