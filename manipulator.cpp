@@ -13,7 +13,7 @@ manipulator::manipulator()
     intakeMotorLeft = new VictorSPX(3);
     intakeMotorRight = new VictorSPX(17);
     
-    intakeMotor2->SetInverted(true);
+    intakeMotorLeft->SetInverted(true);
     
     intakeMotorLeft->Follow(*manipulatorMotorLeft);
     intakeMotorRight->Follow(*manipulatorMotorRight);
