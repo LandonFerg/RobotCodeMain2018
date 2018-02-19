@@ -21,6 +21,12 @@ void Cascade::initElevator()
     cascadeTalon->Config_kD(0, 0, 10);
     cascadeTalon->Config_kF(0, 0, 10);
     
+    cascadeTalon->SetInverted(false);
+    cascadeVictorOne->SetInverted(false);
+    cascadeVictorTwo->SetInverted(false);
+    cascadeVictorThree->SetInverted(false);
+    
+    
     cascadeTalon->SetSensorPhase(true); 
    cascadeTalon->SetSelectedSensorPosition(0,0,10);
    cascadeTalon->ConfigMotionAcceleration(7000, 10);
@@ -62,6 +68,7 @@ void Cascade::controlElevator()
         cout << "Going to cube intake position." << endl;
     }
     
+    
     if (controllerClass->bBButtonRaw[controller_Two] == true) // Ownership of scale is at 4'8"
     {
         cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks((4*12)+8));
@@ -75,3 +82,7 @@ void Cascade::controlElevator()
     }
 } 
 
+void::Cascade::manualElevator()
+{
+    cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, controllerClass->dRightYAxis[controller_Two]);
+}

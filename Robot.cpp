@@ -45,14 +45,14 @@
 #include "Gyro.h"
 
 CController *controllerClass;
-GyroClass *gyroClassOne;
-extern DrivetrainClass *drivetrain;
+DrivetrainClass *drivetrain;
+manipulator *manipulatorClass;
+Cascade *elevator;
+//GyroClass *gyroClassOne;
 
 class Robot : public frc::IterativeRobot {
 
-    DrivetrainClass *drivetrain;
-    manipulator *manipulatorClass;
-    Cascade *elevator;
+
     int switchSide;
 	int scaleSide;  
 	
@@ -62,7 +62,7 @@ public:
 	{
         manipulatorClass = new manipulator();
         controllerClass = new CController();
-		gyroClassOne = new GyroClass;
+	    //gyroClassOne = new GyroClass;
 	    elevator = new Cascade();
 		m_chooser.AddDefault(kAutoNameDefault, kAutoNameDefault);
 		m_chooser.AddObject(kAutoNameCustom, kAutoNameCustom);
@@ -70,10 +70,10 @@ public:
 
     
 		drivetrain = new DrivetrainClass();
-		
+		elevator->initElevator();
 		drivetrain->linkMotors();
 	    drivetrain->linkFollowers();
-	    gyroClassOne->resetYaw();
+	    //gyroClassOne->resetYaw();
 	    
         drivetrain->resetSensor(); // resets sensor pos
 	}
@@ -94,7 +94,7 @@ public:
 	 */
 	void AutonomousInit() override {
 
-        gyroClassOne->resetYaw();
+       // gyroClassOne->resetYaw();
         
 	/*	m_autoSelected = m_chooser.GetSelected();
 		// m_autoSelected = SmartDashboard::GetString(
@@ -153,7 +153,7 @@ public:
 
 	void AutonomousPeriodic() 
     {
-		if (m_autoSelected == kAutoNameCustom) {
+		/*if (m_autoSelected == kAutoNameCustom) {
 			// Custom Auto goes here
 		} else
 		{    
@@ -169,20 +169,23 @@ public:
             std::cout << "ERROR: NOT MOVING" << endl; 
         }*/
     	
-    	std::cout << "YAW: " << gyroClassOne->getYaw() << endl;
+    	//std::cout << "YAW: " << gyroClassOne->getYaw() << endl;
 	}
 
 	void TeleopInit()
 	{
-        elevator->initElevator();
+        elevator->initTeleopElevator();
+        elevator->elevatorHeight(5);
 	}
 
 	void TeleopPeriodic()
 	{
         //gyroClassOne->getYaw();
+        controllerClass->Update();
         elevator->controlElevator();
 		drivetrain->Drive();
         manipulatorClass->manipulatorPower();
+        //elevator->manualElevator();
 		
 	}
 

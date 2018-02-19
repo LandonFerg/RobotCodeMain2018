@@ -9,12 +9,18 @@
 #include <PowerDistributionPanel.h>
 using namespace std;
 
+extern CController * controllerClass;
+
 class manipulator
 {
-    VictorSPX * manipulatorMotor1;
+    VictorSPX * manipulatorMotorRight;
     VictorSPX * intakeMotor1;
+    VictorSPX * manipulatorMotorLeft;
+    VictorSPX * intakeMotor2;
     
-    double c2TRight = controllerClass1->dTriggerRAxis[controller_Two];
+    int count = 0;
+    int *pCount = &count;
+    
 	public:
         CController *controllerClass1;
         void manipulatorPower();

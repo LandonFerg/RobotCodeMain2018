@@ -4,6 +4,7 @@
 
 #include <phoenix.h>
 #include "CController.h"
+#include <WPIlib.h>
 using namespace std;
 //#include <VictorSPX.h>
 
@@ -19,13 +20,12 @@ class Cascade
         VictorSPX * cascadeVictorTwo;
         VictorSPX * cascadeVictorThree;
         double getTicks(double distanceInches);
-        
        
         //double distanceInches;
         
 	public:
         Cascade();
-       
+        void manualElevator();
         void initElevator();
         void initTeleopElevator();
         void elevatorHeight(double);

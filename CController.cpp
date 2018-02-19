@@ -47,6 +47,9 @@ void CController::getControllerOne()
     dLeftYAxis[controller_One] = ControllerOne->GetY(Left_Stick_Y);
     dRightXAxis[controller_One] = ControllerOne->GetX(Right_Stick_X);
     dRightYAxis[controller_One] = ControllerOne->GetY(Right_Stick_Y);
+    
+    dTriggerLAxis[controller_One] = ControllerOne->GetTriggerAxis(Left_Trigger); // I added this - CR
+    dTriggerRAxis[controller_One] = ControllerOne->GetTriggerAxis(Right_Trigger); // I added this - CR
 }
 
 void CController::getControllerTwo()
