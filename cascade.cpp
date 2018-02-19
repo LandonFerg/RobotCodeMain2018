@@ -21,10 +21,10 @@ void Cascade::initElevator()
     cascadeTalon->Config_kD(0, 0, 10);
     cascadeTalon->Config_kF(0, 0, 10);
     
-    cascadeTalon->SetInverted(false);
-    cascadeVictorOne->SetInverted(false);
-    cascadeVictorTwo->SetInverted(false);
-    cascadeVictorThree->SetInverted(false);
+    //cascadeTalon->SetInverted(true);
+    //cascadeVictorOne->SetInverted(true);
+    //cascadeVictorTwo->SetInverted(true);
+    //cascadeVictorThree>SetInverted(true);
     
     
     cascadeTalon->SetSensorPhase(true); 

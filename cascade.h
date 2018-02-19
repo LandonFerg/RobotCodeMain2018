@@ -4,7 +4,6 @@
 
 #include <phoenix.h>
 #include "CController.h"
-#include <WPIlib.h>
 using namespace std;
 //#include <VictorSPX.h>
 

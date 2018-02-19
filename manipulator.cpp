@@ -6,17 +6,17 @@
 manipulator::manipulator()
 {
     manipulatorMotorRight = new VictorSPX(21);
-    manipulatorMotorLeft = new VictorSPX(22);
+    manipulatorMotorLeft = new VictorSPX(22); //The Intake motors appear to be attached to a Y-cable
     
     controllerClass1 = new CController();
     
-    intakeMotorLeft = new VictorSPX(3);
-    intakeMotorRight = new VictorSPX(17);
+    intakeMotor1 = new VictorSPX(3);
+    intakeMotor2 = new VictorSPX(17);
     
-    intakeMotorLeft->SetInverted(true);
+    intakeMotor2->SetInverted(true);
     
-    intakeMotorLeft->Follow(*manipulatorMotorLeft);
-    intakeMotorRight->Follow(*manipulatorMotorRight);
+    intakeMotor1->Follow(*manipulatorMotorLeft);
+    intakeMotor2->Follow(*manipulatorMotorRight);
 }
 
 /*void manipulator::manipulatorPower() // old and commented out for good reason

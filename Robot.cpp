@@ -182,10 +182,10 @@ public:
 	{
         //gyroClassOne->getYaw();
         controllerClass->Update();
-        elevator->controlElevator();
+        //elevator->controlElevator();
 		drivetrain->Drive();
         manipulatorClass->manipulatorPower();
-        //elevator->manualElevator();
+        elevator->manualElevator();
 		
 	}
 

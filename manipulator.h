@@ -14,9 +14,9 @@ extern CController * controllerClass;
 class manipulator
 {
     VictorSPX * manipulatorMotorRight;
-    VictorSPX * intakeMotorRight;
+    VictorSPX * intakeMotor1;
     VictorSPX * manipulatorMotorLeft;
-    VictorSPX * intakeMotorLeft;
+    VictorSPX * intakeMotor2;
     
     int count = 0;
     int *pCount = &count;
