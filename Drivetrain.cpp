@@ -28,6 +28,8 @@
 #include <cmath>
 #include <cfenv>
 #include <climits>
+#include <chrono>
+#include <ctime>
 
 #include "Gyro.h"
 #include "CController.h"
@@ -148,19 +150,23 @@ void DrivetrainClass::goForwards(double speed, double accel, double feet) // Mot
 
 
     
-    leftTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),10); // Pass 0 for timeoutMS to avoid blocking in loop / or 10 out of loop
-    rightTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),10);
+    leftTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0); // Pass 0 for timeoutMS to avoid blocking in loop / or 10 out of loop
+    rightTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0);
     
-    leftTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),10);
-    rightTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),10);
+    leftTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
+    rightTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
     
     
-    leftTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromFeet(feet)*-1);   // Se motion magic to go (feet) value
+    leftTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromFeet(feet)*-1);   // Set motion magic to go (feet) value
     rightTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromFeet(feet)*-1);
     
-
 	//Return error message if running into wall
 	
+}
+
+int DrivetrainClass::checkForward()     // Used for checking if done going forwards in autonomous
+{
+    
 }
 
 void DrivetrainClass::turnLeft(double speed, double accel, double angle)
@@ -176,11 +182,11 @@ void DrivetrainClass::turnLeft(double speed, double accel, double angle)
 
 
     
-    leftTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),10); // Pass 0 for timeoutMS to avoid blocking in loop / or 10 out of loop
-    rightTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),10);
+    leftTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0); // Pass 0 for timeoutMS to avoid blocking in loop / or 10 out of loop
+    rightTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0);
     
-    leftTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),10);
-    rightTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),10);
+    leftTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
+    rightTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
     
     
     leftTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromAngle(angle));   // Se motion magic to go (feet) value

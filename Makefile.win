@@ -1,13 +1,13 @@
 # Project: IHateYou
 # Compiler: FRC
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 19/02/18 18:43
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 20/02/18 13:59
 
 CPP       = arm-frc-linux-gnueabi-gcc.exe
 CC        = arm-frc-linux-gnueabi-gcc.exe
 WINDRES   = "windres.exe"
-OBJ       = Objects/MingW/cascade.o Objects/MingW/CController.o Objects/MingW/Drivetrain.o Objects/MingW/Gyro.o Objects/MingW/manipulator.o Objects/MingW/Robot.o
-LINKOBJ   = "Objects/MingW/cascade.o" "Objects/MingW/CController.o" "Objects/MingW/Drivetrain.o" "Objects/MingW/Gyro.o" "Objects/MingW/manipulator.o" "Objects/MingW/Robot.o"
+OBJ       = Objects/MingW/cascade.o Objects/MingW/CController.o Objects/MingW/Drivetrain.o Objects/MingW/Gyro.o Objects/MingW/manipulator.o Objects/MingW/Robot.o Objects/MingW/auto.o
+LINKOBJ   = "Objects/MingW/cascade.o" "Objects/MingW/CController.o" "Objects/MingW/Drivetrain.o" "Objects/MingW/Gyro.o" "Objects/MingW/manipulator.o" "Objects/MingW/Robot.o" "Objects/MingW/auto.o"
 LIBS      = -L"C:/frc/arm-frc-linux-gnueabi/lib" -L"C:/frc/usr/lib" -L"C:/frc/wpi/lib" -L"C:/navx-mxp/cpp/lib" -lstdc++ -lRoboRIO -lFRCNet -lwpi -lwpiHal -lwpilibc -lwpiutil -lnavx_frc_cpp -lpthread -lCTRE_Phoenix -lCTRE_PhoenixCCI -lm  
 INCS      = -I"C:/frc/include" -I"C:/frc/wpi/include" -I"C:/frc/usr/include"
 CXXINCS   = -I"C:/frc/arm-frc-linux-gnueabi/include/c++/5.5.0" -I"C:/frc/wpi/include" -I"C:/navx-mxp/cpp/include"
@@ -51,5 +51,8 @@ Objects/MingW/Gyro.o: $(GLOBALDEPS) Gyro.cpp Gyro.h Gyro.h
 Objects/MingW/manipulator.o: $(GLOBALDEPS) manipulator.cpp manipulator.h CController.h
 	$(CPP) -c manipulator.cpp -o Objects/MingW/manipulator.o $(CXXFLAGS)
 
-Objects/MingW/Robot.o: $(GLOBALDEPS) Robot.cpp Drivetrain.h CController.h CController.h manipulator.h CController.h cascade.h CController.h Gyro.h Gyro.h
+Objects/MingW/Robot.o: $(GLOBALDEPS) Robot.cpp Drivetrain.h CController.h CController.h manipulator.h CController.h cascade.h CController.h Gyro.h Gyro.h auto.h Gyro.h Drivetrain.h
 	$(CPP) -c Robot.cpp -o Objects/MingW/Robot.o $(CXXFLAGS)
+
+Objects/MingW/auto.o: $(GLOBALDEPS) auto.cpp auto.h Gyro.h Gyro.h Drivetrain.h CController.h
+	$(CPP) -c auto.cpp -o Objects/MingW/auto.o $(CXXFLAGS)

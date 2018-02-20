@@ -43,18 +43,20 @@
 #include "manipulator.h"
 #include "cascade.h"
 #include "Gyro.h"
+#include "auto.h"
 
 CController *controllerClass;
 DrivetrainClass *drivetrain;
 manipulator *manipulatorClass;
 Cascade *elevator;
+AutoClass * autoClass;
 //GyroClass *gyroClassOne;
 
 class Robot : public frc::IterativeRobot {
 
 
     int switchSide;
-	int scaleSide;  
+	int scaleSide;
 	
 
 public:
@@ -64,12 +66,13 @@ public:
         controllerClass = new CController();
 	    //gyroClassOne = new GyroClass;
 	    elevator = new Cascade();
+	    drivetrain = new DrivetrainClass();
+	    autoClass = new AutoClass();
 		m_chooser.AddDefault(kAutoNameDefault, kAutoNameDefault);
 		m_chooser.AddObject(kAutoNameCustom, kAutoNameCustom);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
     
-		drivetrain = new DrivetrainClass();
 		elevator->initElevator();
 		drivetrain->linkMotors();
 	    drivetrain->linkFollowers();
@@ -170,22 +173,24 @@ public:
         }*/
     	
     	//std::cout << "YAW: " << gyroClassOne->getYaw() << endl;
+    	
+    	autoClass->autoRun();
 	}
 
 	void TeleopInit()
 	{
         elevator->initTeleopElevator();
-        elevator->elevatorHeight(5);
+        //elevator->elevatorHeight(5);
 	}
 
 	void TeleopPeriodic()
 	{
         //gyroClassOne->getYaw();
         controllerClass->Update();
-        //elevator->controlElevator();
+        elevator->controlElevator();
 		drivetrain->Drive();
         manipulatorClass->manipulatorPower();
-        elevator->manualElevator();
+       elevator->manualElevator();
 		
 	}
 

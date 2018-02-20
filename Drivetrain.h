@@ -44,6 +44,7 @@ private:
 		void linkMotors();
         void Drive();
         void stop();
+        int checkForward();
         
         
 
