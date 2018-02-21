@@ -1,7 +1,7 @@
 # Project: IHateYou
 # Compiler: FRC
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 20/02/18 13:59
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 20/02/18 18:32
 
 CPP       = arm-frc-linux-gnueabi-gcc.exe
 CC        = arm-frc-linux-gnueabi-gcc.exe
@@ -36,23 +36,23 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
 
-Objects/MingW/cascade.o: $(GLOBALDEPS) cascade.cpp cascade.h CController.h
+Objects/MingW/cascade.o: $(GLOBALDEPS) cascade.cpp
 	$(CPP) -c cascade.cpp -o Objects/MingW/cascade.o $(CXXFLAGS)
 
-Objects/MingW/CController.o: $(GLOBALDEPS) CController.cpp CController.h
+Objects/MingW/CController.o: $(GLOBALDEPS) CController.cpp
 	$(CPP) -c CController.cpp -o Objects/MingW/CController.o $(CXXFLAGS)
 
-Objects/MingW/Drivetrain.o: $(GLOBALDEPS) Drivetrain.cpp Drivetrain.h CController.h Gyro.h Gyro.h Gyro.h CController.h
+Objects/MingW/Drivetrain.o: $(GLOBALDEPS) Drivetrain.cpp
 	$(CPP) -c Drivetrain.cpp -o Objects/MingW/Drivetrain.o $(CXXFLAGS)
 
-Objects/MingW/Gyro.o: $(GLOBALDEPS) Gyro.cpp Gyro.h Gyro.h
+Objects/MingW/Gyro.o: $(GLOBALDEPS) Gyro.cpp
 	$(CPP) -c Gyro.cpp -o Objects/MingW/Gyro.o $(CXXFLAGS)
 
-Objects/MingW/manipulator.o: $(GLOBALDEPS) manipulator.cpp manipulator.h CController.h
+Objects/MingW/manipulator.o: $(GLOBALDEPS) manipulator.cpp
 	$(CPP) -c manipulator.cpp -o Objects/MingW/manipulator.o $(CXXFLAGS)
 
-Objects/MingW/Robot.o: $(GLOBALDEPS) Robot.cpp Drivetrain.h CController.h CController.h manipulator.h CController.h cascade.h CController.h Gyro.h Gyro.h auto.h Gyro.h Drivetrain.h
+Objects/MingW/Robot.o: $(GLOBALDEPS) Robot.cpp
 	$(CPP) -c Robot.cpp -o Objects/MingW/Robot.o $(CXXFLAGS)
 
-Objects/MingW/auto.o: $(GLOBALDEPS) auto.cpp auto.h Gyro.h Gyro.h Drivetrain.h CController.h
+Objects/MingW/auto.o: $(GLOBALDEPS) auto.cpp
 	$(CPP) -c auto.cpp -o Objects/MingW/auto.o $(CXXFLAGS)

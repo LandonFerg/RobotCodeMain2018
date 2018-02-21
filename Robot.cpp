@@ -190,7 +190,7 @@ public:
         elevator->controlElevator();
 		drivetrain->Drive();
         manipulatorClass->manipulatorPower();
-       elevator->manualElevator();
+       //elevator->manualElevator();
 		
 	}
 

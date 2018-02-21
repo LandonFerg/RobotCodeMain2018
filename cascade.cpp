@@ -58,13 +58,13 @@ void Cascade::controlElevator()
 {
     if (controllerClass->bYButtonRaw[controller_Two] == true)
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-6*12 - 8)); // Highest height, which is on scale, is 6' //Negative Required if not inverting -SM
-        cout << "Going to highest scale position." << endl;                                             //-8 added by SM to clear wall
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-6*12 - 11)); // Highest height, which is on scale, is 6' //Negative Required if not inverting -SM
+        cout << "Going to highest scale position." << endl;                                             //-11 added by SM to clear wall
     }
     
     if (controllerClass->bAButtonRaw[controller_Two] == true)
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-1.0)); // Cube intake position. //Negative Required if not inverting and should not be 0 -SM
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-0.5)); // Cube intake position. //Negative Required if not inverting and should not be 0 -SM
         cout << "Going to cube intake position." << endl;
     }
     
