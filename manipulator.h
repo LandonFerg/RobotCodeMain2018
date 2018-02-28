@@ -24,6 +24,8 @@ class manipulator
 	public:
         CController *controllerClass1;
         void manipulatorPower();
+        void autoManipOut();
+        void autoManipStop();
 		manipulator();
 
 };

@@ -30,7 +30,17 @@ manipulator::manipulator()
     manipulatorMotor1->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,c2TRight);
 }*/
 
+void manipulator::autoManipStop()
+{
+            manipulatorMotorLeft->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,0);
+            manipulatorMotorRight->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0);        
+}
 
+void manipulator::autoManipOut()
+{
+            manipulatorMotorLeft->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput,-0.6);
+            manipulatorMotorRight->Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, -0.6);    
+}
 void manipulator::manipulatorPower()
 {   
     double c2TRight = controllerClass->dTriggerRAxis[controller_Two]; // should move this...

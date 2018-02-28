@@ -1,26 +1,6 @@
 #include "Drivetrain.h"
 #include "Gyro.h"
 
-/*
-#define Button_A 1
-#define Button_B 2
-#define Button_X 3
-#define Button_Y 4
-#define Left_Bumper 5
-#define Right_Bumper 6
-#define Button_Back 7
-#define Button_Start 8
-#define Left_Stick_Button 9
-#define Right_Stick_Button 10
-
-// Sticks
-#define Left_Stick_X 0
-#define Left_Stick_Y 1
-#define Right_Stick_X 4
-#define Right_Stick_Y 5
-#define Left_Trigger 2
-#define Right_Trigger 3
-*/
 
 # define M_PI 3.14159265358979323846  /* pi */
 
@@ -34,6 +14,17 @@
 #include "Gyro.h"
 #include "CController.h"
 
+/* ***Motor Controllers*** */
+
+#define leftTPort 1
+#define rightTPort 4
+
+#define leftVOnePort 5
+#define leftVTwoPort 6
+
+#define rightVOnePort 7
+#define rightVTwoPort 8
+
 GyroClass *gyroClassTwo;
 
 DrivetrainClass::DrivetrainClass()
@@ -41,15 +32,15 @@ DrivetrainClass::DrivetrainClass()
     gyroClassTwo = new GyroClass;
     controllerClass = new CController;
     
-	leftTalon = new TalonSRX(2);
-	rightTalon = new TalonSRX(4);
+	leftTalon = new TalonSRX(leftTPort);
+	rightTalon = new TalonSRX(rightTPort);
 
 	//Follower motors 
-	leftVictor1 = new VictorSPX(5);
-	leftVictor2 = new VictorSPX(6);
+	leftVictor1 = new VictorSPX(leftVOnePort);
+	leftVictor2 = new VictorSPX(leftVTwoPort);
 
-	rightVictor1 = new VictorSPX(7);
-	rightVictor2 = new VictorSPX(8);
+	rightVictor1 = new VictorSPX(rightVOnePort);
+	rightVictor2 = new VictorSPX(rightVTwoPort);
 	
 }
 void DrivetrainClass::linkMotors()
@@ -133,7 +124,7 @@ void DrivetrainClass::resetSensor()
 }
 
 
-void DrivetrainClass::goForwards(double speed, double accel, double feet) // Motion Magic?
+int DrivetrainClass::goForwards(double speed, double accel, double feet) // Motion Magic?
 {
     //TODO CRAIG: if good to go forwards returns true, continue
     
@@ -162,6 +153,11 @@ void DrivetrainClass::goForwards(double speed, double accel, double feet) // Mot
     
 	//Return error message if running into wall
 	
+	if(leftTalon->GetSelectedSensorVelocity(leftTPort) < 10) // If velocity less than 100 (~14.6RPM) return 1...
+{
+        return 1;
+    }  // ~14.6 RPM)    // Multiply by (600/SensorUnitsPerRotation) to convert into RPM.    input*(600/4096)
+	
 }
 
 int DrivetrainClass::checkForward()     // Used for checking if done going forwards in autonomous
@@ -169,7 +165,7 @@ int DrivetrainClass::checkForward()     // Used for checking if done going forwa
     
 }
 
-void DrivetrainClass::turnLeft(double speed, double accel, double angle)
+int DrivetrainClass::turnLeft(double speed, double accel, double angle)
 {
     //Set Max accel and cruise velocity (should be in native units since we aren't scaling using encoder counts per rev)
     leftTalon->SetSensorPhase(true);
@@ -191,6 +187,41 @@ void DrivetrainClass::turnLeft(double speed, double accel, double angle)
     
     leftTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromAngle(angle));   // Se motion magic to go (feet) value
     rightTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromAngle(angle)*-1);
+    
+    	if(leftTalon->GetSelectedSensorVelocity(leftTPort) < 10) // If velocity is less than 10 (~1.5RPM) return 1...
+        {
+        return 1;
+        }  // Multiply by (600/SensorUnitsPerRotation) to convert into RPM.    input*(600/4096)
+    
+}
+
+int DrivetrainClass::turnRight(double speed, double accel, double angle)
+{
+    //Set Max accel and cruise velocity (should be in native units since we aren't scaling using encoder counts per rev)
+    leftTalon->SetSensorPhase(true);
+    rightTalon->SetSensorPhase(true);
+    
+    this->linkMotors();
+    	
+    leftTalon->SetSelectedSensorPosition(0,0,0);    // Reset encoders
+    rightTalon->SetSelectedSensorPosition(0,0,0);
+
+
+    
+    leftTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0); // Pass 0 for timeoutMS to avoid blocking in loop / or 10 out of loop
+    rightTalon->ConfigMotionCruiseVelocity(DrivetrainClass::nativeVelFromVel(speed),0);
+    
+    leftTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
+    rightTalon->ConfigMotionAcceleration(DrivetrainClass::nativeVelFromVel(accel),0);
+    
+    
+    leftTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromAngle(angle)*-1);   // Se motion magic to go (feet) value
+    rightTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, DrivetrainClass::nativeFromAngle(angle));
+    
+    	if(leftTalon->GetSelectedSensorVelocity(leftTPort) < 10) // If velocity is less than 10 (~1.5RPM) return 1...
+        {
+        return 1;
+        }  // Multiply by (600/SensorUnitsPerRotation) to convert into RPM.    input*(600/4096)
     
 }
 

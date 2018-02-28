@@ -25,8 +25,9 @@ private:
 	double nativeFromAngle(double angleIn);
 
 	public:
-        void goForwards(double speed, double accel, double feet);
-        void turnLeft(double speed, double accel, double angle); // add double angle
+        int goForwards(double speed, double accel, double feet);
+        int turnLeft(double speed, double accel, double angle);
+        int turnRight(double speed, double accel, double angle);
         
         void resetSensor();
         

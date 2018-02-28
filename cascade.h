@@ -1,7 +1,5 @@
 #ifndef CASCADE_H
 #define CASCADE_H
-
-
 #include <phoenix.h>
 #include "CController.h"
 using namespace std;
