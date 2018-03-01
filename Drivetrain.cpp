@@ -231,7 +231,7 @@ void DrivetrainClass::stop()
     rightTalon->ConfigMotionCruiseVelocity(0,0);
     
     leftTalon->ConfigMotionAcceleration(0,0);
-    rightTalon->ConfigMotionAcceleration(0,0);    
+    rightTalon->ConfigMotionAcceleration(0,0);
 }
 
 // Native Unit Equations
