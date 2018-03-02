@@ -21,10 +21,10 @@ void Cascade::initElevator()
     cascadeTalon->Config_kD(0, 0, 10);
     cascadeTalon->Config_kF(0, 0, 10);
     
-    cascadeTalon->SetInverted(false);
-    cascadeVictorOne->SetInverted(false);
-    cascadeVictorTwo->SetInverted(false);
-    cascadeVictorThree->SetInverted(false);
+    cascadeTalon->SetInverted(true);
+    cascadeVictorOne->SetInverted(true);
+    cascadeVictorTwo->SetInverted(true);
+    cascadeVictorThree->SetInverted(true);
     
     
     cascadeTalon->SetSensorPhase(true); 
@@ -58,26 +58,26 @@ void Cascade::controlElevator()
 {
     if (controllerClass->bYButtonRaw[controller_Two] == true)
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-6*12 - 11)); // Highest height, which is on scale, is 6' //Negative Required if not inverting -SM
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(6*12 + 11)); // Highest height, which is on scale, is 6' //Negative Required if not inverting -SM
         cout << "Going to highest scale position." << endl;                                             //-11 added by SM to clear wall
     }
     
     if (controllerClass->bAButtonRaw[controller_Two] == true)
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-0.5)); // Cube intake position. //Negative Required if not inverting and should not be 0 -SM
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(0.5)); // Cube intake position. //Negative Required if not inverting and should not be 0 -SM
         cout << "Going to cube intake position." << endl;
     }
     
     
     if (controllerClass->bBButtonRaw[controller_Two] == true) // Ownership of scale is at 4'8" //Negative Required if not inverting -SM
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks((-4*12)-8-8)); //-8 added by SM to clear wall
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks((4*12)+8+8)); //-8 added by SM to clear wall
         cout << "Going to position 20.0." << endl;
     }
     
     if (controllerClass->bXButtonRaw[controller_Two] == true) //Negative Required if not inverting -SM 
     {
-        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(-30.0));
+        cascadeTalon->Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, getTicks(30.0));
         cout << "Going to position 30.0." << endl;
     }
 } 

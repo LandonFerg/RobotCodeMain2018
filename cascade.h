@@ -12,7 +12,7 @@ class Cascade
     private:
         
         
-        TalonSRX * cascadeTalon; 
+        TalonSRX * cascadeTalon;
         VictorSPX * cascadeVictorOne;
         VictorSPX * cascadeVictorTwo;
         VictorSPX * cascadeVictorThree;
