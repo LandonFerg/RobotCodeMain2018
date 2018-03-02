@@ -8,7 +8,7 @@ manipulator::manipulator()
     manipulatorMotorRight = new VictorSPX(21);
     manipulatorMotorLeft = new VictorSPX(22); //The Intake motors appear to be attached to a Y-cable
     
-    controllerClass1 = new CController();
+    //controllerClass1 = new CController();
     
     intakeMotor1 = new VictorSPX(3);
     intakeMotor2 = new VictorSPX(17);

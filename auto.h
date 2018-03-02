@@ -13,12 +13,11 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
 using namespace std;
-
+extern DrivetrainClass *drivetrain;
 class AutoClass
 {
     
     private:
-        DrivetrainClass *autoDrivetrain;
         Cascade *autoCascade;
         manipulator *autoManip;
 

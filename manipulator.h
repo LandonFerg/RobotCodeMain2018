@@ -22,7 +22,7 @@ class manipulator
     int *pCount = &count;
     
 	public:
-        CController *controllerClass1;
+       // CController *controllerClass1;
         void manipulatorPower();
         void autoManipOut();
         void autoManipStop();

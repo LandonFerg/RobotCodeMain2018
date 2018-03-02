@@ -3,7 +3,7 @@
 
 AutoClass::AutoClass()
 {
-    autoDrivetrain = new DrivetrainClass();
+    drivetrain = new DrivetrainClass();
     autoCascade = new Cascade();
     autoManip = new manipulator();
     timer = new frc::Timer();
@@ -20,21 +20,21 @@ void AutoClass::mode0(void)    // 1st auto - Far left place on switch
     switch(current_state)
     {
         case 0:
-            retval = autoDrivetrain->goForwards(/*speed*/ 4, /*accel*/ 3, /*Feet*/ 4.5);
+            retval = drivetrain->goForwards(/*speed*/ 4, /*accel*/ 3, /*Feet*/ 4.5);
             break;
         case 1:
             if(gameData[0] == 'R')		// Our switch side is on the right
 		    {
                 // Call another method. We need to turn right, go forwards, and turn left before placing
-                retval = autoDrivetrain->turnRight(4, 3, /* angle */ 90);
+                retval = drivetrain->turnRight(4, 3, /* angle */ 90);
 		    }
 		    else{/* switch is in front of us, place cube, skip turning states*/ current_state = 4;}
             break;
         case 2:
-            retval = autoDrivetrain->goForwards(/*speed*/ 4, /*accel*/ 3, /*Feet*/ 9);
+            retval = drivetrain->goForwards(/*speed*/ 4, /*accel*/ 3, /*Feet*/ 9);
             break;
         case 3:
-            retval = autoDrivetrain->turnLeft(4, 3, /* angle */ 90);
+            retval = drivetrain->turnLeft(4, 3, /* angle */ 90);
         case 4:
             autoCascade->elevatorHeight(22);    // go up to switch height
             returnTime(1);
