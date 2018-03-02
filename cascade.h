@@ -15,7 +15,7 @@ class Cascade
         TalonSRX * cascadeTalon;
         VictorSPX * cascadeVictorOne;
         VictorSPX * cascadeVictorTwo;
-        VictorSPX * cascadeVictorThree;
+        VictorSPX * cascadeVictorThree; 
         double getTicks(double distanceInches);
        
         //double distanceInches;

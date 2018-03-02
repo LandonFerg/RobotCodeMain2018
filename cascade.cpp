@@ -13,7 +13,7 @@ Cascade::Cascade()
 void Cascade::initElevator()
 {
     cascadeVictorOne->Follow(*cascadeTalon);
-    cascadeVictorTwo->Follow(*cascadeTalon);
+    cascadeVictorTwo->Follow(*cascadeTalon); 
     cascadeVictorThree->Follow(*cascadeTalon); 
      
     cascadeTalon->Config_kP(0, 1, 10);
