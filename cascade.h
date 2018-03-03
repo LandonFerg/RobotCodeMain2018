@@ -23,6 +23,7 @@ class Cascade
 	public:
         Cascade();
         void manualElevator();
+        void buttonsElevator();
         void initElevator();
         void initTeleopElevator();
         void elevatorHeight(double);

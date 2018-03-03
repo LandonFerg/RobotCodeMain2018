@@ -1,14 +1,14 @@
 # Project: IHateYou
 # Compiler: FRC
 # Compiler Type: MingW 3
-# Makefile created by wxDev-C++ IDE 7.4.2.569 on 02/03/18 10:16
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 03/03/18 12:54
 
 CPP       = arm-frc-linux-gnueabi-gcc.exe
 CC        = arm-frc-linux-gnueabi-gcc.exe
 WINDRES   = "windres.exe"
-OBJ       = Objects/MingW/cascade.o Objects/MingW/CController.o Objects/MingW/Drivetrain.o Objects/MingW/Gyro.o Objects/MingW/manipulator.o Objects/MingW/Robot.o Objects/MingW/auto.o
-LINKOBJ   = "Objects/MingW/cascade.o" "Objects/MingW/CController.o" "Objects/MingW/Drivetrain.o" "Objects/MingW/Gyro.o" "Objects/MingW/manipulator.o" "Objects/MingW/Robot.o" "Objects/MingW/auto.o"
-LIBS      = -L"C:/frc/arm-frc-linux-gnueabi/lib" -L"C:/frc/usr/lib" -L"C:/frc/wpi/lib" -L"C:/navx-mxp/cpp/lib" -lstdc++ -lRoboRIO -lFRCNet -lwpi -lwpiHal -lwpilibc -lwpiutil -lnavx_frc_cpp -lpthread -lCTRE_Phoenix -lCTRE_PhoenixCCI -lm  
+OBJ       = Objects/MingW/cascade.o Objects/MingW/CController.o Objects/MingW/Drivetrain.o Objects/MingW/Gyro.o Objects/MingW/manipulator.o Objects/MingW/Robot.o Objects/MingW/auto.o Objects/MingW/limitswitch.o
+LINKOBJ   = "Objects/MingW/cascade.o" "Objects/MingW/CController.o" "Objects/MingW/Drivetrain.o" "Objects/MingW/Gyro.o" "Objects/MingW/manipulator.o" "Objects/MingW/Robot.o" "Objects/MingW/auto.o" "Objects/MingW/limitswitch.o"
+LIBS      = -L"C:/frc/arm-frc-linux-gnueabi/lib" -L"C:/frc/usr/lib" -L"C:/frc/wpi/lib" -L"C:/navx-mxp/cpp/lib" -L"C:/frc/wpi/include" -lstdc++ -lRoboRIO -lFRCNet -lwpi -lwpiHal -lwpilibc -lwpiutil -lnavx_frc_cpp -lpthread -lCTRE_Phoenix -lCTRE_PhoenixCCI -lm  
 INCS      = -I"C:/frc/include" -I"C:/frc/wpi/include" -I"C:/frc/usr/include"
 CXXINCS   = -I"C:/frc/arm-frc-linux-gnueabi/include/c++/5.5.0" -I"C:/frc/wpi/include" -I"C:/navx-mxp/cpp/include"
 RCINCS    =
@@ -55,4 +55,4 @@ Objects/MingW/Robot.o: $(GLOBALDEPS) Robot.cpp Drivetrain.h CController.h CContr
 	$(CPP) -c Robot.cpp -o Objects/MingW/Robot.o $(CXXFLAGS)
 
 Objects/MingW/auto.o: $(GLOBALDEPS) auto.cpp auto.h Gyro.h Gyro.h Drivetrain.h CController.h manipulator.h CController.h cascade.h CController.h
-	$(CPP) -c auto.cpp -o Objects/MingW/auto.o $(CXXFLAGS)
+	$(CPP) -c a

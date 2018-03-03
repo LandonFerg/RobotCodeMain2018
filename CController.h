@@ -52,6 +52,10 @@ class CController
         bool bStartButtonReleased [2];
         bool bStartButtonRaw [2];
         
+        bool bBackButtonPressed [2];
+        bool bBackButtonReleased [2];
+        bool bBackButtonRaw [2];
+        
         bool bAButtonRaw [2];
         bool bBButtonRaw [2];
         bool bXButtonRaw [2];

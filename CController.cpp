@@ -23,6 +23,10 @@ void CController::getControllerOne()
     bStartButtonReleased[controller_One] = ControllerOne->GetStartButtonReleased();
     bStartButtonRaw[controller_One] = ControllerOne->GetRawButton(Button_Start);
     
+    bBackButtonPressed[controller_One] = ControllerOne->GetBackButtonPressed();
+    bBackButtonReleased[controller_One] = ControllerOne->GetBackButtonReleased();
+    bBackButtonRaw[controller_One] = ControllerOne->GetRawButton(Button_Back);
+    
     bAButtonRaw[controller_One] = ControllerOne->GetRawButton(Button_A);
     bBButtonRaw[controller_One] = ControllerOne->GetRawButton(Button_B);
     bXButtonRaw[controller_One] = ControllerOne->GetRawButton(Button_X);
@@ -57,6 +61,10 @@ void CController::getControllerTwo()
     bStartButtonPressed[controller_Two] = ControllerTwo->GetStartButtonPressed();
     bStartButtonReleased[controller_Two] = ControllerTwo->GetStartButtonReleased();
     bStartButtonRaw[controller_Two] = ControllerTwo->GetRawButton(Button_Start);
+    
+    bBackButtonPressed[controller_Two] = ControllerTwo->GetBackButtonPressed();
+    bBackButtonReleased[controller_Two] = ControllerTwo->GetBackButtonReleased();
+    bBackButtonRaw[controller_Two] = ControllerTwo->GetRawButton(Button_Raw);
     
     bAButtonRaw[controller_Two] = ControllerTwo->GetRawButton(Button_A);
     bBButtonRaw[controller_Two] = ControllerTwo->GetRawButton(Button_B);

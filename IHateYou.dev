@@ -1,7 +1,7 @@
 [Project]
 FileName=IHateYou.dev
 Name=IHateYou
-UnitCount=13
+UnitCount=15
 PchHead=-1
 PchSource=-1
 Ver=3
@@ -210,6 +210,26 @@ BuildCmd=
 FileName=auto.h
 CompileCpp=1
 Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit14]
+FileName=Y:\Robot 2018\limitswitch.h
+CompileCpp=1
+Folder=IHateYou
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit15]
+FileName=Y:\Robot 2018\limitswitch.cpp
+CompileCpp=1
+Folder=IHateYou
 Compile=1
 Link=1
 Priority=1000
